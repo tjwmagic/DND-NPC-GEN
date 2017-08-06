@@ -29,10 +29,17 @@ void main() {
 	int hp = 0;
 	int arrAbilityScore[6];
 
-	// Gender Generator
-	string PlayerGender; 
-	int genderRandom = rand();
-	int genderNum = 0;
+	// Name and gender generator
+	string dwarfMaleNames[6] = { "Adrik", "Gardain", "Baern", "Oskar", "Flint", "Veit" };
+	string dwarfLastNames[6] = { "Balderk", "Gorunn", "Ironfist", "Loderr", "Torunn", "Strakeln" };
+	string elfMaleNames[6] = { "Adran", "Erevan", "Hadarai", "Ivellios", "Rolen", "Varis" };
+	string elfLastNames[6] = { "Amakiir", "Enna", "Lia", "Holimion", "Meliamne", "Goldpetal" };
+	string halflingMaleNames[6] = { "Alton", "Cade", "Cora", "Errich", "Garret", "Milo" };
+	string halflingLastNames[6] = { "Goodbarrel", "High-hill", "Tealleaf", "Tosscobble", "Underbough", "Greenbottle" };
+	string humanMaleNames[6] = { "Robert", "Travis", "John", "David", "Trampas", "William" };
+	string humanLastNames[6] = { "Myers", "Whiteman", "Brightblade", "Strongheart", "Dragonhelm", "Wildor" };
+
+	int genderNumber = 0;
 
 	
 
@@ -49,10 +56,60 @@ void main() {
 		cout << "The roll is: " << arrAbilityScore[x] << endl;
 	}
 
+	int max, randomNumber, i, g; // int 'i' is for the name generator. int 'g' is for the gender generator
+	max = 5; // Max number of names to be displayed
+
+	genderNumber = (rand() % 2) + 1;
+	cout << "RANDOM GENDER: " << genderNumber << endl;
+
 	// Pick a race for the NPC
 	cout << "\nPick a race: " << endl;
 	cout << "\n1. Human\n2.Elf\n3.Dwarf\n4.Halfling" << endl;
 	cin >> race;
+
+	if (race == 1) {
+		for (i = 0; i <= 5; i++) {
+			randomNumber = (rand() % max) + 1;
+			cout << "RANDOM NUMBER: " << randomNumber << endl;
+
+			cout << "NAME: " << humanMaleNames[randomNumber] << endl;
+			cout << "NAME: " << humanLastNames[randomNumber] << endl;
+
+		}
+	}
+
+	else if (race == 2) {
+		for (i = 0; i <= 5; i++) {
+			randomNumber = (rand() % max) + 1;
+			cout << "RANDOM NUMBER: " << randomNumber << endl;
+
+			cout << "NAME: " << elfMaleNames[randomNumber] << endl;
+			cout << "NAME: " << elfLastNames[randomNumber] << endl;
+
+		}
+	}
+
+	else if (race == 3) {
+		for (i = 0; i <= 5; i++) {
+			randomNumber = (rand() % max) + 1;
+			cout << "RANDOM NUMBER: " << randomNumber << endl;
+
+			cout << "NAME: " << dwarfMaleNames[randomNumber] << endl;
+			cout << "NAME: " << dwarfLastNames[randomNumber] << endl;
+
+		}
+	}
+
+	else if (race == 4) {
+		for (i = 0; i <= 5; i++) {
+			randomNumber = (rand() % max) + 1;
+			cout << "RANDOM NUMBER: " << randomNumber << endl;
+
+			cout << "NAME: " << halflingMaleNames[randomNumber] << endl;
+			cout << "NAME: " << halflingLastNames[randomNumber] << endl;
+
+		}
+	}
 
 	cout << endl << endl;
 
@@ -61,6 +118,7 @@ void main() {
 	cout << "\n1. Mage\n2.Assassin\n3.Bandit\n4.Guard" << endl;
 	cin >> npcClass;
 
+	
 	// Class sorting system.
 	if (npcClass = 1) {
 		cout << "\nYour class, Mage, has no armor\n";
@@ -111,16 +169,7 @@ void main() {
 		cout << "\nYour HP is: " << hp << endl;
 	}
 
-	// Gender Generator
-	genderNum = genderRandom % 2;
-	if (genderNum == 1) {
-		PlayerGender = "Male";
-		cout << "\nYour gender is Male!";
-	}
-	else {
-		PlayerGender = "Female";
-		cout << "\nYour gender is Female!";
-	}
+
 
 	system("pause");
 } // end of main
