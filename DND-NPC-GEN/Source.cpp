@@ -1,6 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 using namespace std;
 
 int getInt(string);
@@ -8,9 +10,14 @@ int getInt(string, int, int);
 int rollDice(int numSides, int numDice);
 
 void main() {
+	srand(time(0)); //seed generator
 	const int speed = 30;
+
+	// Race-Class
 	int race;
 	int npcClass;
+
+	// Ability Scores
 	int roll = 0;
 	int str = 0;
 	int dex = 0;
@@ -20,8 +27,14 @@ void main() {
 	int wis = 0;
 	int cha = 0;
 	int hp = 0;
-
 	int arrAbilityScore[6];
+
+	// Gender Generator
+	string PlayerGender; 
+	int genderRandom = rand();
+	int genderNum = 0;
+
+	
 
 	cout << "DND NPC Generator for 5th Edition DND, licensed for public used under the Open Gaming License, Version 1.0a\n";
 	cout << "This program was devloped under the System Reference Document 5.1 and the Open Gaming License, Version 1.0a\n";
@@ -29,23 +42,26 @@ void main() {
 	
 	cout << "Rolling some dice to find your ability scores\n";
 
-	srand(time(0)); //seed generator
-
+	
+	// Roll for ability scores
 	for (int x = 1; x <= 6; x++) {
 		arrAbilityScore[x] = rollDice(6, 3);
 		cout << "The roll is: " << arrAbilityScore[x] << endl;
 	}
 
+	// Pick a race for the NPC
 	cout << "\nPick a race: " << endl;
 	cout << "\n1. Human\n2.Elf\n3.Dwarf\n4.Halfling" << endl;
 	cin >> race;
 
 	cout << endl << endl;
 
+	// Pick a class
 	cout << "\nPick a class" << endl;
 	cout << "\n1. Mage\n2.Assassin\n3.Bandit\n4.Guard" << endl;
 	cin >> npcClass;
 
+	// Class sorting system.
 	if (npcClass = 1) {
 		cout << "\nYour class, Mage, has no armor\n";
 		dexBase = 0;
@@ -95,10 +111,21 @@ void main() {
 		cout << "\nYour HP is: " << hp << endl;
 	}
 
+	// Gender Generator
+	genderNum = genderRandom % 2;
+	if (genderNum == 1) {
+		PlayerGender = "Male";
+		cout << "\nYour gender is Male!";
+	}
+	else {
+		PlayerGender = "Female";
+		cout << "\nYour gender is Female!";
+	}
 
 	system("pause");
 } // end of main
 
+// get int to ensure int is a INTEGER ONLY
 int getInt(string prompt) {
 	string userInput;
 	int value = 0;
@@ -117,7 +144,7 @@ int getInt(string prompt) {
 	return value;
 } // end of getInt
 
-
+// getInt to find low and high values
 int getInt(string prompt, int low, int high) {
 	int value = 0;
 	value = getInt(prompt);
@@ -128,6 +155,8 @@ int getInt(string prompt, int low, int high) {
 	return value;
 } // end of getInt string, int, int
 
+
+// random dice roll 
 int rollDice(int numSides, int numDice) {
 	int roll = 0;
 	for (int x = 1; x <= numDice; x++) {
