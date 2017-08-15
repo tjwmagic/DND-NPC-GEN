@@ -3,6 +3,9 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+
+#include "generatorName.h"
+#include "generatorGender.h"
 using namespace std;
 
 int getInt(string);
